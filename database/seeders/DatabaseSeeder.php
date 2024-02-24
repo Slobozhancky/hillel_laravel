@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
         // Цей клас дозволить нам, викликати всі створені сідери, однією командою sail a db:seed
 
         $this->call(PermissionAndRolesSeeder::class);
+        $this->call(UsersSeeder::class);
     }
 }
