@@ -12,11 +12,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        // Цей клас дозволить нам, викликати всі створені сідери, однією командою sail a db:seed
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $this->call(PermissionAndRolesSeeder::class);
     }
 }
