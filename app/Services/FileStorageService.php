@@ -2,12 +2,13 @@
 
 namespace App\Services;
 
+use App\Services\Contracts\FileStorageServiceContract;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-class FileStorageService implements Contract\FileStorageServiceContract
+class FileStorageService implements FileStorageServiceContract
 {
     public function upload(string|UploadedFile $file, string $additionalPath = ''): string
     {
