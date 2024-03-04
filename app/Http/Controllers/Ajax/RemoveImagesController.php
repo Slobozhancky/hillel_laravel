@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Ajax;
 use App\Http\Controllers\Controller;
 use App\Models\Image;
 use App\Models\Product;
-use http\Env\Response;
 
 class RemoveImagesController extends Controller
 {

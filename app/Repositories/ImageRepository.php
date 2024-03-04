@@ -2,9 +2,10 @@
 
 namespace App\Repositories;
 
+use App\Repositories\Contracts\ImageRepositoryContract;
 use Illuminate\Database\Eloquent\Model;
 
-class ImageRepository implements Contracts\ImageRepositoryContract
+class ImageRepository implements ImageRepositoryContract
 {
 
     public function attach(Model $model, string $relation, array $images = [], string $directory = null): void

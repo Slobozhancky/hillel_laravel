@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Services\Contract\FileStorageServiceContract;
+use App\Services\Contracts\FileStorageServiceContract;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

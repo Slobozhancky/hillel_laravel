@@ -6,7 +6,7 @@ use App\Repositories\Contracts\ImageRepositoryContract;
 use App\Repositories\Contracts\ProductsRepositoryContract;
 use App\Repositories\ImageRepository;
 use App\Repositories\ProductsRepository;
-use App\Services\Contract\FileStorageServiceContract;
+use App\Services\Contracts\FileStorageServiceContract;
 use App\Services\FileStorageService;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
