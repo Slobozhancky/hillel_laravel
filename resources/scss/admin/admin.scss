@@ -1,5 +1,7 @@
 // Fonts
 @import url('https://fonts.bunny.net/css?family=Nunito');
+@import "@fortawesome/fontawesome-free/css/all.min.css";
+
 
 // Variables
 @import '../variables';
@@ -12,8 +14,8 @@ body {
 }
 
 main {
-    height: 100vh;
-    max-height: 100vh;
+    //height: 100vh;
+    //max-height: 100vh;
     overflow-x: auto;
     overflow-y: hidden;
 }
