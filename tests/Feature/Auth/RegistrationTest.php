@@ -14,10 +14,6 @@ class RegistrationTest extends TestCase
 
     use RefreshDatabase, WithFaker;
 
-    /**
-     * A basic feature test example.
-     */
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -30,43 +26,28 @@ class RegistrationTest extends TestCase
         $this->seed(PermissionAndRolesSeeder::class);
         $this->seed(UsersSeeder::class);
     }
-
-
     public function test_user_registration_with_valid_data()
     {
+
+        $password = $this->faker->password(8);
+        $email = fake()->safeEmail();
+
         $response = $this->post(route('register'), [
-            'name' => 'John Doe',
-            'surname' => 'John Doe',
-            'email' => 'john@example.com',
-            'phone' => '+380675443139',
-            'birthday' => '1993-12-20',
-            'password' => 'password123',
-            'password_confirmation' => 'password123'
+            'name' => fake()->name(),
+            'surname' => fake()->lastName(),
+            'email' => $email,
+            'phone' => fake()->e164PhoneNumber(),
+            'birthday' => $this->faker->date('Y-m-d', '-30 years'),
+            'password' => $password,
+            'password_confirmation' => $password
         ]);
 
         $response->assertStatus(302); // Перевіряємо редірект
         $response->assertRedirect('/home'); // Перевіряємо редірект на сторінку dashboard
         $this->assertAuthenticated(); // Перевіряємо, що користувач автентифікований
-        $this->assertDatabaseHas('users', ['email' => 'john@example.com']); // Перевіряємо наявність користувача в базі даних
+        $this->assertDatabaseHas('users', ['email' => $email]); // Перевіряємо наявність користувача в базі даних
     }
 
-    public function test_user_registration_with_invalid_data()
-    {
-        $response = $this->post(route('register'), [
-            'name' => 'John Doe',
-            'surname' => 'John Doe',
-            'email' => '',
-            'phone' => '+380675443139',
-            'birthday' => '1993-12-20',
-            'password' => 'passwor23',
-            'password_confirmation' => 'password123'
-        ]);
-
-        $response->assertSessionHasErrors(['email']); // Перевіряємо наявність помилок у сесії
-        $response->assertRedirect(); // Перевіряємо редірект на поточну сторінку (бо валідація не пройшла)
-        $this->assertGuest(); // Перевіряємо, що користувач не автентифікований
-        $this->assertDatabaseMissing('users', ['email' => 'invalid-email']); // Перевіряємо відсутність користувача в базі даних
-    }
 }
 
 

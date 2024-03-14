@@ -37,11 +37,7 @@ class CategoriesTest extends TestCase
         $response->assertSuccessful();
         $response->assertViewIs('admin.categories.index');
         $response->assertSeeInOrder($categories->pluck('name')->toArray());
-
-
     }
-
-
 
     public function test_does_not_allow_see_categories_with_role_customer()
     {
